@@ -1,0 +1,22 @@
+library(ggridges)
+library(ggplot2)
+library(rcartocolor)
+
+data<- ... #insert users dataframe
+
+data<-na.omit(data)
+data$Angle[data$Angle < 0] <- (data$Angle[data$Angle < 0]) * (-1)
+
+data$Stage <- factor(data$Stage,levels = c("S5", "S3", "S2"))
+
+ggplot(data, aes(y=Stage, x= Angle, fill = factor(Lobe_Furrow), cex.axis = 15)) +
+  stat_density_ridges(geom = "density_ridges_gradient", calc_ecdf = TRUE, quantiles = 2, quantile_lines = F, scale = 1.2)+
+  scale_x_continuous(limits=c(0, 90), breaks = seq (0, 90, by = 10))+
+  scale_fill_manual(values = c("#31A35499", "#E5F5E099")) +
+  geom_vline(xintercept = 30, linetype="dashed", color = "red", size=1, alpha=.7)+ 
+  geom_vline(xintercept = 60, linetype="dashed", color = "red", size=1, alpha=.7)+
+  geom_boxplot(aes(x = Angle, y = Stage), position = "dodge", outlier.shape = NA, alpha = 0.85, width = .15, colour = "black", fill="white") +
+  geom_point(data = data, aes(x = Angle, y = Stage, shape=factor(Lobe_Furrow)), position=position_jitter(height = .05), alpha = 0.2, size = 2.5, inherit.aes = F)+
+  facet_wrap(~Lobe_Furrow, scales="free")+
+  theme_classic()+
+  theme(text = element_text(size=20))
