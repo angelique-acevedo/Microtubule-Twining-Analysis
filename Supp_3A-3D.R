@@ -8,7 +8,7 @@ library(ggplot2)
 library(rcartocolor)
 library(dplyr)
 
-data <- read.csv(...) #insert dataset here
+data <- read.csv("~/Downloads/Supp.3D_IN6_Angle_Stages.csv", stringsAsFactors=TRUE) #insert dataset here
 
 #1. Omit NAs and transform data to be continuous (0 to 180 degrees)
 data <-na.omit(data)
