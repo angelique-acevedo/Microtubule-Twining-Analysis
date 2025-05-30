@@ -6,6 +6,7 @@
 library(ggridges)
 library(ggplot2)
 library(rcartocolor)
+library(RColorBrewer)
 library(dplyr)
 
 data <- read.csv("~/Downloads/IN6_Angle_Stages.csv", stringsAsFactors=TRUE) #insert dataset here
