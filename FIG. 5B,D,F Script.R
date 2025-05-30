@@ -8,7 +8,7 @@ library(dplyr)
 library(cowplot)
 
 #1 Load dataset
-data <- read.csv("~/Downloads/FIG_5_Cells.csv", stringsAsFactors=TRUE)
+data <- read.csv("~/Downloads/FIG_5_Data.csv", stringsAsFactors=TRUE)
 
 #2. Calculate IQR and threshold ranges for each category (area, circularity, and geodesic diameter)
 #AREA
