@@ -6,6 +6,7 @@ library(ggplot2)
 library(ggsignif)
 library(dplyr)
 library(cowplot)
+library(ggpubr)
 
 #1 Load dataset
 data <- read.csv("~/Downloads/FIG_5_Data.csv", stringsAsFactors=TRUE)
