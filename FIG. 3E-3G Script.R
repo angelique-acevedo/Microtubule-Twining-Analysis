@@ -1,4 +1,4 @@
-###Figure 3E-3G
+###FIGURE 3E-3G Script
 ## DESCRIPTION: This code was created to generate bar plots in Figures 3E-3G of Acevedo et al. (in preparation), demonstrating the percentage of angle groupings of microtubules across all selected samples. 
 
 #1. Load library packages
