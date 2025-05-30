@@ -7,8 +7,8 @@ library(dplyr)
 library(RColorBrewer)
 library (ggpattern)
 
-#2. Load in dataset and remove NAs from data
-datum<- read.csv("~/Library/CloudStorage/Box-Box/Onyenedum_Lab/Angelique_Acevedo/Projects/2. Bean_Team (NYU)/Immunohistochemistry/Microtubules/MT_Dataset/1. Measurements_Organized/Hypocotyl_Angle_Stages.csv", stringsAsFactors=TRUE)
+#2. Load in dataset and remove NAs from data. Datasets for this graph include read.csv("~/Downloads/[Hypocotyl,IN1,IN3,IN6]_Angle_Stages.csv", stringsAsFactors=TRUE)
+datum<- read.csv("~/Downloads/IN6_Angle_Stages.csv", stringsAsFactors=TRUE)
 datum <- na.omit(datum)
 
 #3. Correct the angle column: Add 180 to negative angles to transform data to be continuous from 0 to 180 degrees
