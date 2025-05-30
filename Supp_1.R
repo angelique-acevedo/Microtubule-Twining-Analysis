@@ -9,7 +9,7 @@ library(rstatix)
 library(ggpubr)
 library (ddply) 
 
-datum <-  read.csv("~/Library/CloudStorage/Box-Box/Onyenedum_Lab/Angelique_Acevedo/Projects/2. Bean_Team (NYU)/Immunohistochemistry/Microtubules/MT_Dataset/1. Measurements_Organized/Stage5/InternodeDev_Stages.csv", stringsAsFactors=TRUE)
+datum <-  read.csv("~/Downloads/Supp_1_Data.csv", stringsAsFactors=TRUE) 
 
 #2. Arrange the order in which $stages and $section will appear on the graph and omit all NAs from dataset
 datum$Stage <- factor(datum$Stage,levels = c("S2", "S3", "S5"))
@@ -60,7 +60,8 @@ library(rstatix)
 library(ggpubr)
 
 #import data
-datum <- read.csv("~/Library/CloudStorage/Box-Box/Onyenedum_Lab/Angelique_Acevedo/Projects/2. Bean_Team (NYU)/Immunohistochemistry/Microtubules/MT_Dataset/1. Measurements_Organized/Stage5/Stage2_InternodesHeights.csv", stringsAsFactors=TRUE)
+datum <-  read.csv("~/Downloads/Supp_1_Data.csv", stringsAsFactors=TRUE) 
+length(which(datum$Stage == "S2"))
 
 #2. Arrange the order in which $section will appear on the graph 
 datum$Section <- factor(datum$Section,levels = c("Hyp", "Epi","IN1", "IN2", "IN3", "IN4", "IN5", "IN6", "IN7", "IN8", "IN9"))
