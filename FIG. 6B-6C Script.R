@@ -11,8 +11,7 @@ library (tidyverse)
 library(dplyr)
 
 #1. Load the dataset and transform microtubule (MT) angles to consider only absolute values (0-90 degrees). 
-data <- read.csv("~/Library/CloudStorage/Box-Box/Onyenedum_Lab/Angelique_Acevedo/Projects/2. Bean_Team (NYU)/Immunohistochemistry/Microtubules/MT_Dataset/Lobe or Furrow/S5_IN3_FurrowvLobe.csv", stringsAsFactors=TRUE)
-data$Angle[data$Angle < 0] <- (data$Angle[data$Angle < 0]) * (-1)
+data <-read.csv("~/Downloads/FIG_6_IN1_FurrowvLobe.csv", stringsAsFactors=TRUE)
 
 #2. Assign cut-off values for the MT angle groups (longitudinal, transverse, and skewed. 
 data<- data%>%
