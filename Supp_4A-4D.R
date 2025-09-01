@@ -1,5 +1,5 @@
-###FIGURE Suppmental 3A-3D Script 
-## Description: This code was used for generating ridgeline relative density (S3a-S3d; Acevedo et. al., in prep) to determine overall
+###FIGURE Suppmental 4A-4D Script 
+## Description: This code was used for generating ridgeline relative density (S4a-S4d; Acevedo et al., in review) to determine overall
 ## distribution of measured angles for each sampled segment at the three selected developmental stages. 
 
 #Load packages
