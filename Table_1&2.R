@@ -7,16 +7,17 @@ library(ggplot2)
 library(dplyr)
 
 #1. Input the file for lobe v. furrow analysis (use 'Hypocotyl_Angle_Stages.csv' for overall MT distribution analysis)
-datum <-read.csv("~/Downloads/FIG_6_IN1_FurrowvLobe.csv", stringsAsFactors=TRUE)
+datum <-read.csv("~/Downloads/FIG_6_IN3_FurrowvLobe.csv", stringsAsFactors=TRUE)
 
 #2. Correct the angle column: Add 180 to negative angles for 'Hypocotyl_Angle_Stages.csv' OR take absolute values for [FIG_6_IN1,IN3_FurrowvLobe.csv]
-datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] * (-1)
+datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] + 180
 
 #3. Bin the angles into four categories
 datum$Angle_Category <- cut(
   datum$Angle,
-  breaks = c(-Inf, 30, 60, Inf),
-  labels = c("Transverse", "Skewed", "Longitudinal"),
+  breaks = c(-Inf, 22.5, 67.5, 112.5, 157.5, Inf),
+  labels = c("Transverse", "Right-Handed", "Longitudinal", "Left-Handed", 
+            "Transverse"),
   include.lowest = TRUE
 )
 
