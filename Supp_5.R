@@ -1,5 +1,5 @@
 ###SUPPLEMENTAL Figure 5: Correlation Analysis of twined angle vs CMT angles
-##DESCRIPTION: This scpript was used to generate supplemental figure 5 in Acevedo et al., (in review). The plot documents the relationship between the angle of ascent (pitch angle of twined stem) vs. corresponding cortical microtubule angles found at internode 6 stage 5. 
+##DESCRIPTION: This script was used to generate supplemental figure 5 in Acevedo et al., (in review). The plot documents the relationship between the angle of ascent (pitch angle of twined stem) vs. corresponding cortical microtubule angles found at internode 6 stage 5. 
 
 #Load packages and dataset
 library(ggplot2)
