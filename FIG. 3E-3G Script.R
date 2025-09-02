@@ -8,12 +8,11 @@ library(RColorBrewer)
 library (ggpattern)
 
 #2. Load in dataset and remove NAs from data. Datasets for this graph include read.csv("~/Downloads/[Hypocotyl,IN1,IN3,IN6]_Angle_Stages.csv", stringsAsFactors=TRUE)
-datum<- read.csv("~/Downloads/IN6_Angle_Stages.csv", stringsAsFactors=TRUE)
+datum<- read.csv("~/Downloads/Hypocotyl_Angle_Stages.csv", stringsAsFactors=TRUE)
 datum <- na.omit(datum)
 
 #3. Correct the angle column: Add 180 to negative angles to transform data to be continuous from 0 to 180 degrees
 datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] + 180
-length(which(datum$Stage == "S2"))
 
 #4. Bin the angles into four categories based on angle cutoffs
 datum$Angle_Category <- cut(
@@ -24,11 +23,11 @@ datum$Angle_Category <- cut(
 )
 
 #5. Filter for Stage 2
-stage2_data <- datum %>% filter(Stage == "S3")
+stage2_data <- datum %>% filter(Stage == "S2")
 
 #6. Get the count of each angle category for Stage 2
 stage2_counts <- table(stage2_data$Angle_Category)
-View(stage2_counts)
+
 
 #7. Calculate cell percentages based on the binning system
 stage2_df <- as.data.frame(stage2_counts)
@@ -42,7 +41,7 @@ p <- ggplot(stage2_df, aes(x = factor(Var1,
                                                  "Right-skewed",
                                                  "Left-skewed",
                                                  "Longitudinal")),
-                           y = Freq, fill=Var1)) +
+                           y = Percentage, fill=Var1)) +
   geom_bar(stat = "identity", color = "black") +  
   geom_text(aes(label = paste0(round(Percentage, 1), "%")),
             vjust = -0.5, size = 6) +  # Percentage labels slightly smaller
