@@ -1,5 +1,5 @@
-###FIGURE 5B, 5D, 5F 
-##DESCRIPTION: This script was used to generate boxplots in fig. 5b, 5d, 5f of (Acevedo et al., in prep) of cell area, circularity, and geodesic diameter between the lobes and furrows of selected samples. 
+###FIGURE 5
+##DESCRIPTION: This script was used to generate boxplots in fig. 5a-i of (Acevedo et al., in prep) of cell area, circularity, and geodesic diameter between the lobes and furrows of selected samples. 
 
 # Load Packages
 library(ggplot2)
