@@ -1,5 +1,5 @@
-###FIGURE 6B-6C Script 
-## Description: This code was used for generating stacked barplots (Fig.6b-6c; Acevedo et. al., in prep) to indicate the 
+###FIGURE 6B-D Script 
+## Description: This code was used for generating stacked barplots (Fig.6b-6d; Acevedo et. al., in prep) to indicate the 
 ## percent (%) composition of longitudinal, skewed, and transverse microtubule angles found along the lobes and furrows of 
 ## common bean at developmental stage 5, internode 1, and internode 3. 
 
