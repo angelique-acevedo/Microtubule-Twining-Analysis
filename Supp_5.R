@@ -3,7 +3,7 @@
 
 #Load packages and dataset
 library(ggplot2)
-datum <- read.csv("~/Downloads/Sup_5_data.csv")
+datum <- read.csv("~/Downloads/Supp_5_data.csv")
 
 #Transform data set to be 0-180
 datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] + 180
