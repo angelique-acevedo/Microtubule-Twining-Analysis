@@ -10,8 +10,8 @@ library(RColorBrewer)
 library(ggpattern)
 
 #2. Load in dataset and clean
-datum <- read.csv("~/Downloads/FIG_6_IN1_FurrowvLobe.csv", stringsAsFactors=TRUE)
-view(datum)
+datum <- read.csv("~/Downloads/FIG_6_IN3_FurrowvLobe.csv", stringsAsFactors=TRUE)
+#view(datum)
 #3. Correct the angle column
 datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] + 180
 
@@ -39,9 +39,9 @@ datum <- datum %>%
 colr <- c("#8AB0D0", "#F2B770", "#EB8777", "#B7D876")
 
 p <- ggplot(datum, aes(x = Angle_Category, 
-                               y = Percentage, 
-                               fill = Angle_Category,
-                               pattern_angle = Angle_Category)) +
+                       y = Percentage, 
+                       fill = Angle_Category,
+                       pattern_angle = Angle_Category)) +
   geom_col_pattern(aes(color = Angle_Category),
                    pattern_fill="white", 
                    pattern_color="white", 
@@ -52,19 +52,24 @@ p <- ggplot(datum, aes(x = Angle_Category,
                 group = Lobe_Furrow),
             vjust = -0.5, size = 5,
             position = position_dodge(width = 0.9)) +
-  
+  scale_x_discrete(labels = c(
+    "Transverse" = "T",
+    "Right-skewed" = "R-H",
+    "Longitudinal" = "Lo.",
+    "Left-skewed" = "L-H"
+  ))+
   facet_wrap(~Lobe_Furrow) +   # <-- separate plots per group
   scale_color_manual(values = colr) +
   scale_fill_manual(values = colr) +
   scale_pattern_angle_manual(values = c(0, 45, 90, -45)) +
   
-  labs(title = "Internode 3 Angle Distribution Lobe vs. Furrow",
+  labs(title = "Internode 1 Angle Distribution Lobe vs. Furrow",
        x = "Angle Category", y = "% of Cells") +
   theme_classic(base_size = 18) +
   theme(
     axis.title.x = element_text(size = 18),
     axis.title.y = element_text(size = 18),
-    axis.text.x  = element_text(angle = -20, hjust = .5, vjust=0, size = 14),
+    #axis.text.x  = element_text(angle = -20, hjust = .5, vjust=0, size = 14),
     axis.text.y  = element_text(size = 16),
     plot.title   = element_text(size = 20, hjust = 0.5)
   ) +
@@ -91,7 +96,6 @@ datum <- data %>%
     mean = mean(Angle), 
     lci = t.test(Angle, conf.level =.95)$conf.int[1], 
     uci = t.test(Angle, conf.level =.95)$conf.int[2])
-
 
 #3. Plot distribution 
 ggplot(datum, aes(y = Lobe_Furrow, fill = Lobe_Furrow))+
