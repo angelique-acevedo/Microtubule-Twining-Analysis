@@ -2,17 +2,17 @@
 ## DESCRIPTION: This code was created to generate density plots in Figures 3E-3G of Acevedo et al. (in preparation), demonstrating the distribution of angle groupings of microtubules across all selected samples and paired with SE bars around the mean.  
 
 #1 Load in dataset and remove NAs
-datum<- read.csv("~/Downloads/Hypocotyl_Angle_Stages.csv", stringsAsFactors=TRUE)
+datum<- read.csv("~/Downloads/IN6_Angle_Stages.csv", stringsAsFactors=TRUE)
 datum <- na.omit(datum)
 
 #2 Correct the angle column: Add 180 to negative angles to transform data to be continuous from 0 to 180 degrees
 datum$Angle[datum$Angle < 0] <- datum$Angle[datum$Angle < 0] + 180
 
 #3. Filter by Stages and generate a summary statistics dataframe
-datum <- datum %>% filter(Stage == "S2")
+datum <- datum %>% filter(Stage == "S5")
 
 summary_df <- datum %>%
-    group_by(Stage) %>%
+  group_by(Stage) %>%
   summarise(
     Angle = Angle,
     n=n(),
@@ -20,6 +20,13 @@ summary_df <- datum %>%
     se   = sd(Angle, na.rm = TRUE) / sqrt(n()),  # Standard Error
     .groups = "drop"
   )
+
+#3.5 Annotations of bins
+annotations <- data.frame(
+  Angle = c(10, 45, 90, 135,170),
+  y = c(0.025, 0.025, 0.025, 0.025, 0.025),
+  label = c("T", "R-H", "Lo.", "L-H", "T"))
+
 
 #4. Generate density plot 
 ggplot (datum, aes(x=Angle))+
@@ -30,6 +37,7 @@ ggplot (datum, aes(x=Angle))+
   geom_density(color="black", fill="#8DD9A7", alpha=.6)+
   geom_jitter(aes(x=Angle, y = 0.001), width = 0, height = 0.001, 
               alpha = 0.15, size = 9) +
+  geom_text(data = annotations, aes(x = Angle, y = y, label = label), size = 15, fontface = "bold", parse=F)+
   theme_classic(base_size=50)+
   scale_x_continuous(limits=c(0, 180), breaks = seq (0, 180, by = 20))+
   geom_errorbar(data = summary_df, aes(x = mean,  y=0.01, xmin = mean - se, xmax = mean + se), color = "dark red", linewidth = 5) +
