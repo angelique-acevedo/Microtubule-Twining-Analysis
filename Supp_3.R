@@ -54,7 +54,7 @@ ggplot(datum, aes(x = Cell_Type, y = Angle)) +
     label = "p.format"
   )+
   theme_classic(base_size=22)+
-    scale_y_continuous(limits = c(0, 190), breaks = seq(0, 190, by = 20))
+  scale_y_continuous(limits = c(0, 190), breaks = seq(0, 190, by = 20))
 
 #7. Compute percentages for Angle Categories
 datum <- datum %>%
@@ -67,9 +67,9 @@ datum <- datum %>%
 colr <- c("#8AB0D0", "#F2B770", "#EB8777", "#B7D876")
 
 p <- ggplot(datum, aes(x = Angle_Category, 
-                               y = Percentage, 
-                               fill = Angle_Category,
-                               pattern_angle = Angle_Category)) +
+                       y = Percentage, 
+                       fill = Angle_Category,
+                       pattern_angle = Angle_Category)) +
   geom_col_pattern(aes(color = Angle_Category),
                    pattern_fill="white", 
                    pattern_color="white", 
@@ -85,11 +85,17 @@ p <- ggplot(datum, aes(x = Angle_Category,
   scale_pattern_angle_manual(values = c(0, 45, 90, -45)) +
   labs(title = "Inner vs. Outer Epidermal MT Orientations - Hypocotyl (Stage 5)",
        x = "Angle Category", y = "% of Cells") +
+  scale_x_discrete(labels = c(
+    "Transverse" = "T",
+    "Right-skewed" = "R-H",
+    "Longitudinal" = "Lo.",
+    "Left-skewed" = "L-H"
+  ))+
   theme_classic(base_size = 18) +
   theme(
     axis.title.x = element_text(size = 18),
     axis.title.y = element_text(size = 18),
-    axis.text.x  = element_text(angle = -20, hjust = 0.2, vjust=1, size = 14),
+    #axis.text.x  = element_text(angle = -20, hjust = 0.2, vjust=1, size = 14),
     axis.text.y  = element_text(size = 16),
     plot.title   = element_text(size = 20, hjust = 0.5)
   ) +
